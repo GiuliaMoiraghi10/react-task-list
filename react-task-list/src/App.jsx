@@ -36,7 +36,7 @@ function App() {
           <ul>
             {currTask.map(element => (
               <li key={element.id}>
-                <strong>{element.title}</strong><span>{element.state}</span>
+                <strong>{element.title}</strong><span className='btnState'>{element.state}</span>
                 <br />
                 Priority: {element.priority}
                 <br />
@@ -52,7 +52,7 @@ function App() {
           <ul>
             {completedTask.map(element => (
               <li key={element.id}>
-                <strong>{element.title}</strong><span>{element.state}</span>
+                <strong>{element.title}</strong><span className='btnState'>{element.state}</span>
                 <br />
                 Priority: {element.priority}
                 <br />
