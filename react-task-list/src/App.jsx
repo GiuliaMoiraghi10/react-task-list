@@ -1,35 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+//importo file tasks.js
+import tasks from './tasks'
+
+
 function App() {
-  const [count, setCount] = useState(0)
+
+  //creo variabile per filtrare "backlog e in_progress"
+  const currTask = tasks.filter((task) => {
+    if (task.state === 'backlog') {
+      return true
+    } else if (task.state === 'in_progress') {
+      return true
+    }
+  })
+
+  //creo variabile per numero tasks
+  const countTasks = currTask.length
+
+  //creo variabile per filtrare "completed"
+  const completedTask = tasks.filter((task) => task.state === 'completed')
+
+  //creo variabile per numero tasks
+  const countCompleteTask = completedTask.length
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section>
+        <header>
+          <h1>Task Manager</h1>
+        </header>
+
+        <main>
+          <h2>Current Tasks ({countTasks})</h2>
+          <ul>
+            {currTask.map(element => (
+              <li key={element.id}>
+                <strong>{element.title}</strong><span>{element.state}</span>
+                <br />
+                Priority: {element.priority}
+                <br />
+                Est.time: {element.estimatedTime}
+              </li>
+            ))}
+          </ul>
+
+          <hr />
+
+          <h2>Completed Tasks ({countCompleteTask})</h2>
+
+          <ul>
+            {completedTask.map(element => (
+              <li key={element.id}>
+                <strong>{element.title}</strong><span>{element.state}</span>
+                <br />
+                Priority: {element.priority}
+                <br />
+                Est.time: {element.estimatedTime}
+              </li>
+            ))}
+          </ul>
+        </main>
+      </section>
     </>
   )
 }
 
 export default App
+

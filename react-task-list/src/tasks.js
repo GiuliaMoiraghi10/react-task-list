@@ -72,3 +72,5 @@ const tasks = [
 ]
 
 console.log(tasks)
+
+export default tasks
