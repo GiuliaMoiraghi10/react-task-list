@@ -27,12 +27,12 @@ function App() {
   return (
     <>
       <section>
-        <header>
-          <h1>Task Manager</h1>
+        <header className='header'>
+          <h1 className='title'>Task Manager</h1>
         </header>
 
         <main>
-          <h2>Current Tasks ({countTasks})</h2>
+          <h2 className='subTitle'>Current Tasks ({countTasks})</h2>
           <ul>
             {currTask.map(element => (
               <li key={element.id}>
@@ -47,7 +47,7 @@ function App() {
 
           <hr />
 
-          <h2>Completed Tasks ({countCompleteTask})</h2>
+          <h2 className='subTitle'>Completed Tasks ({countCompleteTask})</h2>
 
           <ul>
             {completedTask.map(element => (
